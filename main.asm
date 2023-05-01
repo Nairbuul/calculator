@@ -1,6 +1,7 @@
 ; CS 066 
 ; Brian Luu
 INCLUDE Irvine32.inc
+INCLUDE Macros.inc
 
 .data
     ; define your variables here
@@ -33,8 +34,6 @@ INCLUDE Irvine32.inc
 
 .code 
 
-;******BUGS*************
-; Enter will reset the inputQueueSize
 main proc
     ; write your assembly code here
 
@@ -222,7 +221,8 @@ Subtraction PROC
     mov eax, [totalSize]                                    ;Checking to see which one of the inputs are larger by
     cmp eax, [inputQueueSize]                               ;a.) Checking the size
     jb InputGreater                                         ;b.) Checking the first digit if the size is the same.
-   
+    ja TotalGreater
+
    mov esi, OFFSET total
    mov edi, OFFSET inputQueue
 
